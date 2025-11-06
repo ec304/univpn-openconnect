@@ -6,12 +6,12 @@ The univpn.sh command provides two switches, --split, which activates split vpn 
 
 ## Setup
 To use it, please use kwalletmanager to add the relevant entries (case sensitive):
-[walletname] (kdewallet for most)
-|- vpn
-    |- Passwords
-        |- USER -> Uni-ID (no email, no suffixes, only 5 char ID)
-        |- PASS -> Passwords as used in heiCO and other Uni-ID logins
-        |- TOKEN -> base32 encoded TOTP Secret
+[walletname] (kdewallet for most)  
+|- vpn  
+    |- Passwords  
+        |- USER -> Uni-ID (no email, no suffixes, only 5 char ID)  
+        |- PASS -> Passwords as used in heiCO and other Uni-ID logins  
+        |- TOKEN -> base32 encoded TOTP Secret  
 
 (To create this structure, choose your wallet, go to the Folders section, add a new folder "vpn", choose the "Passwords" Entry in the Folder, then add three entries as above. On the right side you will then have the entry you selected in the Passwords subfolder on the left. Click on Show Contents, which will open a Text Field where you can input your values.)
 
