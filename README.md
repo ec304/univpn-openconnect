@@ -1,3 +1,29 @@
+# Alternatives
+You can also move your openconnect binary to openconnect-bin, then create a sh script in its place with 
+```
+#!/bin/sh
+ 
+/usr/sbin/openconnect-bin "$@" --gnutls-priority="NORMAL:-VERS-ALL:+VERS-TLS1.2"
+```
+This should even work with Network Manager and other tools that use openconnect to facilitate VPN connections. (However, you might need to reboot)
+
+# Do I need this?
+If you cannot connect with plain openconnect (per command or NetworkManager), specifically with the error
+```
+Got inappropriate HTTP CONNECT response: HTTP/1.1 401 Unauthorized
+Creating SSL connection failed
+Cookie was rejected by server; exiting.
+```
+this is likely because of an error with TLS negotiation. 
+You can use the --gnutls-priority flag of openconnect to force TLS1.2, which should fix the problem. (See Status of openconnect below)
+This error will only happen after you correctly logged in. If your connection fails because of "Login Failed" after inputting your credentials, it is likely not a problem with TLS but rather your credentials. Ensure you can login with username and password on heiCO, and your TOTPs correctly function in the Test function on the MFA Page (without VPN only from within University Networks, of course).
+
+# Status of openconnect and TLS
+Connections failing because of TLS Errors look identical to working ones until after you logged in. (They will show "`connected [] with ciphersuite (TLS1.X)-...`" in the logs, where 1.3 should never work due to the error. However, sometimes NetworkManager Logs show 1.3 even when using the openconnect script from above, in which case it will work, because it is actually 1.2. I have no idea what is happening here)
+See the [openconnect](https://gitlab.com/openconnect/openconnect/-/issues/730) [bug reports](https://gitlab.com/openconnect/openconnect/-/issues/659).
+I have personally tested openconnect v9.01-3 and v9.12-3 from debian 12 and 13, respectively, and they have not fixed the problem yet.
+If you have a newer version feel free to contribute the Status.
+
 # About
 This repo has two scripts, "univpn.sh" which uses the kdewallet system to store user secrets, and "command-only.sh" which starts only the connection but requires manual input of username, password and one time token.
 
