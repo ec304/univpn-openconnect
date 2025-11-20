@@ -6,7 +6,7 @@ NOTP=false
 
 # Check if any arguments are provided
 if [ "$#" -eq 0 ]; then
-	echo "No arguments provided. Continuing with default options (use -h for help)"
+	echo "No arguments provided. Continuing with default options (use -h for help). You can only automatically send all (Password, TOTP and Username) or Username only. If you want to manually enter TOTP you also need to manually input the password, but you can still use the -s option for automatic username modification depending on whether you want a split tunnel or not"
 else
 	for arg in "$@"
 		do
