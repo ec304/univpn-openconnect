@@ -5,7 +5,7 @@ You can also move your openconnect binary to openconnect-bin, then create a sh s
  
 /usr/sbin/openconnect-bin "$@" --gnutls-priority="NORMAL:-VERS-ALL:+VERS-TLS1.2"
 ```
-This should even work with Network Manager and other tools that use openconnect to facilitate VPN connections. (However, you might need to reboot)
+This should even work with Network Manager and other tools that use openconnect to facilitate VPN connections. This will force ALL connections to EXCLUSIVELY use TLS1.2, even if they support 1.3, so if you need to use openconnect for other Connections too, you might want to choose another solution. (You might need to reboot after changing the files)
 
 # Do I need this?
 If you cannot connect with plain openconnect (per command or NetworkManager), specifically with the error
