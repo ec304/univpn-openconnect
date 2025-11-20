@@ -22,7 +22,7 @@ This error will only happen after you correctly logged in. If your connection fa
 Connections failing because of TLS Errors look identical to working ones until after you logged in. (They will show "`connected [] with ciphersuite (TLS1.X)-...`" in the logs, where 1.3 should never work due to the error. However, sometimes NetworkManager Logs show 1.3 even when using the openconnect script from above, in which case it will work, because it is actually 1.2. I have no idea what is happening here)
 See the [openconnect](https://gitlab.com/openconnect/openconnect/-/issues/730) [bug reports](https://gitlab.com/openconnect/openconnect/-/issues/659).
 I have personally tested openconnect v9.01-3 and v9.12-3 from debian 12 and 13, respectively, and they have not fixed the problem yet.
-If you have a newer version feel free to contribute the Status.
+If you have a newer version feel free to contribute the Status. (In the discussions Tab)
 
 # About
 This repo has two scripts, "univpn.sh" which uses the kdewallet system to store user secrets, and "command-only.sh" which starts only the connection but requires manual input of username, password and one time token.
